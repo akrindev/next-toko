@@ -1,0 +1,9 @@
+
+
+export default function Home() {
+  return (
+    <>
+      <div className="p-5 bg-sky-400">hellow</div>
+    </>
+  )
+}
