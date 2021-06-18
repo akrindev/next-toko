@@ -1,20 +1,26 @@
 import Layout from "../components/Layout";
 import Category from "../components/Category"
 import Product from "../components/Product"
+import { getAllProducts } from "../action/product"
 
-const productsList = [
-  { name: 'Baju lucu dan halus', slug: 'lucu', price: 200000, discount: 5, stock:true, featured_image: { url: 'http://placekitten.com/300/300' } },
-  { name: 'Baju lucu', slug: 'lucu', price: 200000, discount: 5, stock:true, featured_image: { url: 'http://placekitten.com/300/300' } },
-  { name: 'Pasmina lucu', slug: 'lucu', price: 200000, discount: 5, stock:true, featured_image: { url: 'http://placekitten.com/300/300' } },
-]
 
-export default function Home() {
+export default function Home({ items }) {
   return (
     <Layout name='Dian Busana'>
       <Category/>
       
-      <Product items={productsList}/>
+      <Product items={items}/>
 
     </Layout>
   )
+}
+
+export const getStaticProps = async (ctx) => {
+  const { data } = await getAllProducts();
+
+  return {
+    props: {
+      items: data
+    }
+  }
 }
