@@ -1,14 +1,27 @@
+import Head from "next/head"
 import Layout from "../../components/Layout"
 import { getAllProducts, getProduct } from "../../action/product"
-import Link from "next/link"
+import Swipe from "../../components/Swipe"
+
 import { digits, getDiscount } from "../../action/digit"
 
 export default function Product({ product }) {
     return (
         <Layout name="Dian Busana">
-        <div className="md:flex lg:justify-between space-y-3 items-center my-3 lg:pr-3">
+            <Head>
+                <title>{product.name}</title>
+            </Head>
+
+            <div className="md:flex">
+
+            <Swipe images={product.images}/>
+
+            <div className="lg:ml-7 lg:w-2/3">
+                
+            <div className="md:flex lg:justify-between space-y-3 items-center my-3 lg:pr-3">
+            
             <div className="flex flex-col">
-                <h1 className="text-2xl font-extrabold font-sans">{ product.name }</h1>
+                    <h1 className="text-2xl font-extrabold font-sans">{ product.name }</h1>
                     <div>
                         {! product.discount ?
                          (<span className="font-light font-mono text-sm">Rp. { digits(product.price) }</span>) : (
@@ -21,7 +34,7 @@ export default function Product({ product }) {
                     <div className="py-1">
                         <span className="px-2 py-1 bg-gray-300 rounded-md">{ product.categories[0].name }</span>
                     </div>
-                </div>
+            </div>
                 <div>
                     <button className="bg-green-500 hover:bg-green-700 text-white md:px-9 py-2 rounded-xl flex items-center justify-center space-x-2 w-full md:w-auto" onClick="window.open(`//api.whatsapp.com/send/?phone={{ $toko_whatsapp }}&text=${encodeURIComponent('\r\n \r\n Hai Admin, saya ingin tau tentang product ini. boleh di bantu?')}`)">
                         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" className="w-5 h-5 fill-current">
@@ -32,7 +45,7 @@ export default function Product({ product }) {
                 </div>
             </div>
 
-            <div className="my-5">
+            <div className="my-5 flex-1">
                 <h2 className="text-2xl font-bold">Size</h2>
                 <div>
                     {product.size.split(',').map(size => {
@@ -60,6 +73,10 @@ export default function Product({ product }) {
                     { product.description }
                 </div>
             </div>
+
+            </div>
+            </div>
+        
         </Layout>
     )
 }
