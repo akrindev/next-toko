@@ -14,7 +14,7 @@ export default function Layout({ name, children }) {
         </nav>
 
 
-        <section className="content max-w-5xl mx-auto p-4 lg:p-0 my-5">
+        <section className="content max-w-5xl mx-auto p-4 lg:p-0 my-5 lg:my-16">
             { children }
         </section>
 

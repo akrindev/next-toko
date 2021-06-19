@@ -3,7 +3,6 @@ import Category from "../components/Category"
 import Product from "../components/Product"
 import { getAllProducts } from "../action/product"
 
-
 export default function Home({ items }) {
   return (
     <Layout name='Dian Busana'>
@@ -21,6 +20,7 @@ export const getStaticProps = async (ctx) => {
   return {
     props: {
       items: data
-    }
+    },
+    revalidate: 1 
   }
 }

@@ -6,4 +6,10 @@ const getAllProducts = async () => {
     return products
 }
 
-export { getAllProducts }
+const getProduct = async (slug) => {
+    const product = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/product/${slug}`).then(response => response.json())
+
+    return product
+}
+
+export { getAllProducts, getProduct }

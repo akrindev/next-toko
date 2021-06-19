@@ -1,17 +1,6 @@
 import Link from 'next/link'
 import Image from 'next/image'
-
-const digits = (digit) => {
-    digit = digit.toString().split('').reverse().join('')
-    digit = digit.match(/\d{1,3}/g).reverse().join('.')
-    return Number(digit)
-} 
-
-const getDiscount = (price, discount) => {
-    const digit = digits( (price - (price * (discount/100))).toFixed())
-
-    return digit
-}
+import { digits, getDiscount } from "../action/digit"
 
 const Stock = () => {
     return (<div className="absolute inset-0 h-full bg-black text-white opacity-60 rounded flex items-center justify-center -m-px">Habis</div>)
@@ -27,7 +16,7 @@ const Discount = ({ discount }) => {
 
 const ProductList = ({ item }) => {
     return (
-        <Link href={ `/product/${item.slug}` }>
+        <Link href={ `/product/${encodeURIComponent(item.slug)}` }>
             <a className="relative hover:bg-purple-100 rounded-md p-1">
                 <div className="flex flex-col">
                     <Image 
