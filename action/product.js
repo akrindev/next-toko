@@ -12,4 +12,16 @@ const getProduct = async (slug) => {
     return product
 }
 
-export { getAllProducts, getProduct }
+const getAllCategories = async () => {
+    const categories = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/category`).then(response => response.json())
+    
+    return categories
+}
+
+const getCategory = async (name) => {
+    const categories = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/category/${name}`).then(response => response.json())
+
+    return categories
+}
+
+export { getAllProducts, getProduct, getAllCategories, getCategory }

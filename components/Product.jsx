@@ -22,8 +22,8 @@ const ProductList = ({ item }) => {
                     <Image 
                     src={ item.featured_image.url } 
                     alt={ item.name } 
-                    width={300}
-                    height={400}
+                    width={270}
+                    height={350}
                     className="h-52 md:h-64 w-full object-cover rounded-md transition ease-in-out duration-200 transform hover:scale-95"/>
 
                     <span className="font-semibold font-sans text-md">{ item.name }</span>
